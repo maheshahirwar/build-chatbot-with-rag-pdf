@@ -71,6 +71,17 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 ### 4) Run React UI (optional)
 
+> Prerequisite: install Node.js LTS (includes `npm`) from https://nodejs.org/
+>
+> Verify installation:
+>
+> ```bash
+> node -v
+> npm -v
+> ```
+>
+> If PowerShell says `npm` is not recognized, close and reopen terminal after installing Node.js.
+
 ```bash
 cd frontend
 npm install
@@ -109,6 +120,8 @@ cd frontend
 npm install
 npm run dev
 ```
+
+If `npm` is not recognized on Windows, install Node.js LTS and reopen PowerShell.
 
 4. Open the UI in your browser:
 
