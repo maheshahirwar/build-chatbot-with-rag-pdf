@@ -37,7 +37,7 @@ pip install -r requirements.txt
 ### 2) Configure environment
 
 ```bash
-cp .env.example .env
+copy .env.example .env
 ```
 
 #### Option A: Test with Ollama (no OpenAI key required)
