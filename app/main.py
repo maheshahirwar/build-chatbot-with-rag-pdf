@@ -6,6 +6,7 @@ from tempfile import NamedTemporaryFile
 
 import httpx
 from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.chat_service import ChatService, ChatServiceError
 from app.config import get_settings
@@ -22,6 +23,14 @@ vector_store = VectorStore(settings.index_path)
 vector_store.load()
 
 app = FastAPI(title=settings.app_name)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/health")

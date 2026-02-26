@@ -69,6 +69,64 @@ OPENAI_MODEL=gpt-4o-mini
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
+### 4) Run React UI (optional)
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173` in your browser.
+
+If your backend is not running at `http://localhost:8000`, create a `frontend/.env` file:
+
+```env
+VITE_API_BASE_URL=http://localhost:8000
+```
+
+## End-to-End Run (Backend + React UI)
+
+1. Start Ollama in one terminal:
+
+```bash
+ollama serve
+```
+
+2. Start the FastAPI backend in a second terminal from project root:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+3. Start the React UI in a third terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+4. Open the UI in your browser:
+
+- `http://localhost:5173`
+
+5. In the UI:
+
+- Upload a `.pdf` file using **Upload & Index**.
+- Wait for the "Indexed X chunks" success message.
+- Ask a question in the text area and click **Ask**.
+- Read the generated answer and source chunks.
+
+6. Quick troubleshooting:
+
+- If upload fails, verify backend is running at `http://localhost:8000/health`.
+- If chat fails, ensure Ollama model is available (`ollama pull llama3.1`).
+- If UI cannot reach backend, set `frontend/.env` with `VITE_API_BASE_URL=http://localhost:8000`.
+
 ## API Usage
 
 ### Health Check
