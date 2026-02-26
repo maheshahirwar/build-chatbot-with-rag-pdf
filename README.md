@@ -69,6 +69,23 @@ OPENAI_MODEL=gpt-4o-mini
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
+### 4) Run React UI (optional)
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173` in your browser.
+
+If your backend is not running at `http://localhost:8000`, create a `frontend/.env` file:
+
+```env
+VITE_API_BASE_URL=http://localhost:8000
+```
+
+
 ## API Usage
 
 ### Health Check
